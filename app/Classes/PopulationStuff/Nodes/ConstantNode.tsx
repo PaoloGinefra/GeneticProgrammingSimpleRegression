@@ -1,3 +1,4 @@
+import Population from "../Population";
 import OpNode from "./OpNode";
 
 interface ConstantNode_interface {
@@ -12,9 +13,9 @@ export default class ConstantNode extends OpNode implements ConstantNode_interfa
     value: number;
     isVariable: boolean = false;
 
-    constructor(value: number, isVariable: boolean = false) {
+    constructor(value: (number | undefined) = undefined, isVariable: boolean = false) {
         super();
-        this.value = value;
+        this.value = value === undefined ? (Math.random() - 0.5) * 2 : value;
         this.isVariable = isVariable;
     }
 
@@ -27,6 +28,9 @@ export default class ConstantNode extends OpNode implements ConstantNode_interfa
     }
 
     mutate(): void {
+        if (Math.random() < Population.mutationRate)
+            if (!this.isVariable)
+                this.value += (Math.random() - 0.5) * 2 * 0.1;
     }
 
     toString(): string {

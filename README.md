@@ -14,9 +14,14 @@ classDiagram
     class Population{
         -int populationSize
         -int generation
-        -float mutationRate
-        -int tournamentSize
-        -int newIndividualsPerGeneration
+        -float mutationRate$
+        -float variableProbability$
+        -float sumProbability$
+        -float addNodeProbability$
+        -float variableConstantSwitchProbability$
+        -float newRandomTreeProbability$
+        -int tournamentSize$
+        -int newIndividualsPerGeneration$
         -scoreIndividuals(Environment: env)
         -tournamentSelection() Individual
         -breeding()
@@ -37,6 +42,8 @@ classDiagram
         +mutate()
         +crossover(Individual: A, Individual:B) Individual$
         +draw(P5: p5)
+        +loadX(float: x)$
+        +treeDeepCopy(root: OpNode) OpNode$
     }
 
     Individual "1" *--> "1" OpNode : root

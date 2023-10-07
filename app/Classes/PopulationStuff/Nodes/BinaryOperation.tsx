@@ -1,19 +1,19 @@
 import OpNode from "./OpNode";
 
 export interface BinaryOperation {
-    nutralElement: number;
+    neutralElement: number;
     evaluate: (A: OpNode, B: OpNode) => number;
     symbol: string;
 }
 
 const BinaryOperations: { [key: string]: BinaryOperation } = {
     ADD: {
-        nutralElement: 0,
+        neutralElement: 0,
         evaluate: function (A: OpNode, B: OpNode) { return A.evaluate() + B.evaluate() },
         symbol: "+"
     },
     MULTIPLY: {
-        nutralElement: 1,
+        neutralElement: 1,
         evaluate: function (A: OpNode, B: OpNode) { return A.evaluate() * B.evaluate() },
         symbol: "*"
     },
