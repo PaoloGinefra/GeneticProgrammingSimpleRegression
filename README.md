@@ -38,18 +38,18 @@ classDiagram
         +draw(P5: p5)
     }
 
-    Individual "1" *--> "1" Node : root
+    Individual "1" *--> "1" OpNode : root
     Individual "1" *--> "1" ConstantNode : variable
 
-    class Node{
+    class OpNode{
         <<Abstract>>
         +evaluate() float
         +mutate()
     }
 
     class BinaryNode{
-        -Node left
-        -Node right
+        -OpNode left
+        -OpNode right
         +evaluate() float
         +mutate()
     }
@@ -58,10 +58,11 @@ classDiagram
         -float value
         +load(float: value)
         +evaluate() float
+        +mutate()
     }
 
-    Node <|-- BinaryNode
-    Node <|-- ConstantNode
+    OpNode <|-- BinaryNode
+    OpNode <|-- ConstantNode
 
     BinaryNode "0..*" --> "1" BinaryOperation : operation
 
@@ -71,7 +72,7 @@ classDiagram
         MULTIPLY
         -float neutralElement
 
-        +evaluate(Node: A, Node: B) float
+        +evaluate(OpNode: A, OpNode: B) float
     }
 
     class Environment{
