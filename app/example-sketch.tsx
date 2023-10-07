@@ -6,8 +6,6 @@ import { Image, Renderer } from 'p5'
 import useStatefulSketch from './p5/useStatefulSketch'
 import SketchRenderer from './p5/SketchRenderer'
 
-import classes from './example-sketch.module.css'
-
 export default function ExampleSketch() {
   const [size, setSize] = useState(50)
 
@@ -52,7 +50,7 @@ export default function ExampleSketch() {
   })
 
   return (
-    <div className={classes['container']}>
+    <div>
       <label htmlFor="sizeSlider">Dimensione</label>
       <input
         id="sizeSlider"
