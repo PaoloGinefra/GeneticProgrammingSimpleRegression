@@ -6,6 +6,8 @@ import { Image, Renderer } from 'p5'
 import useStatefulSketch from './p5/useStatefulSketch'
 import SketchRenderer from './p5/SketchRenderer'
 
+import Individual from './Classes/PopulationStuff/Individual'
+
 export default function ExampleSketch() {
   const [size, setSize] = useState(50)
 
@@ -32,7 +34,12 @@ export default function ExampleSketch() {
       canvas = p.createCanvas(w, h)
       canvas.mouseClicked(function () {
         setSize(50)
+        let i = new Individual();
+        console.log(i.root.toString());
       })
+
+      let i = new Individual();
+      console.log(i.root.toString());
     }
 
     p.draw = function () {

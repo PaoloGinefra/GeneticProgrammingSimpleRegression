@@ -22,9 +22,14 @@ export default class BinaryNode extends OpNode implements BinaryNode_interface {
     }
 
     evaluate(): number {
-        return 0;
+        return this.operation.evaluate(this.left, this.right);
     }
 
     mutate(): void {
+
+    }
+
+    toString(): string {
+        return `(${this.left.toString()} ${this.operation.symbol} ${this.right.toString()})`;
     }
 }

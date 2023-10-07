@@ -2,6 +2,7 @@ import OpNode from "./OpNode";
 
 interface ConstantNode_interface {
     value: number;
+    isVariable: boolean;
     load(x: number): void;
     evaluate(): number;
     mutate(): void;
@@ -9,10 +10,12 @@ interface ConstantNode_interface {
 
 export default class ConstantNode extends OpNode implements ConstantNode_interface {
     value: number;
+    isVariable: boolean = false;
 
-    constructor(value: number) {
+    constructor(value: number, isVariable: boolean = false) {
         super();
         this.value = value;
+        this.isVariable = isVariable;
     }
 
     load(x: number): void {
@@ -24,5 +27,9 @@ export default class ConstantNode extends OpNode implements ConstantNode_interfa
     }
 
     mutate(): void {
+    }
+
+    toString(): string {
+        return this.isVariable ? "x" : "(" + this.value.toFixed(2).toString() + ")";
     }
 }

@@ -32,6 +32,7 @@ classDiagram
     class Individual{
         -float fitness
         -Color lineColor
+        -buildRandomTree(int: expectedDepth) OpNode
         +evaluate(float: x) float
         +mutate()
         +crossover(Individual: A, Individual:B) Individual$
@@ -45,6 +46,7 @@ classDiagram
         <<Abstract>>
         +evaluate() float
         +mutate()
+        +toString() String
     }
 
     class BinaryNode{
@@ -71,6 +73,7 @@ classDiagram
         ADD
         MULTIPLY
         -float neutralElement
+        -char symbol
 
         +evaluate(OpNode: A, OpNode: B) float
     }

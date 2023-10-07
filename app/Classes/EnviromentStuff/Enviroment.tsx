@@ -14,7 +14,11 @@ export default class Environment implements Environment_interface {
     }
 
     computeFitness(individual: Individual): number {
-        return 0;
+        let fitness = 0;
+        this.points.forEach(point => {
+            fitness += Math.pow(individual.evaluate(point.x) - point.y, 2);
+        });
+        return fitness;
     }
 
 }
