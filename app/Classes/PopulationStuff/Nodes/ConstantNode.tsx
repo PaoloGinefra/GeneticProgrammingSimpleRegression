@@ -30,7 +30,7 @@ export default class ConstantNode extends OpNode implements ConstantNode_interfa
     mutate(): void {
         if (Math.random() < Population.mutationRate)
             if (!this.isVariable)
-                this.value += (Math.random() - 0.5) * 2 * 0.1;
+                this.value += (Math.random() - 0.5) * 2 * Population.constantMutationStep;
     }
 
     toString(): string {

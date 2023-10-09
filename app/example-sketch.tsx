@@ -12,8 +12,9 @@ import Environment from './Classes/EnviromentStuff/Enviroment'
 
 export default function ExampleSketch() {
   const [size, setSize] = useState(50)
+  const [func, setFunc] = useState("")
 
-  const sketch = useStatefulSketch({ size }, (state, p) => {
+  const sketch = useStatefulSketch({ size, setFunc }, (state, p) => {
     const w = 800
     const h = 800
 
@@ -32,11 +33,7 @@ export default function ExampleSketch() {
       })
 
       env = new Environment(
-        [p.createVector(0, 0),
-        p.createVector(1, 1),
-        p.createVector(2, 2),
-        p.createVector(3, -1),
-        ]
+        []
       );
 
       pop = new Population(20);
@@ -47,13 +44,9 @@ export default function ExampleSketch() {
       p.background(0, 0, 0)
 
       let best = pop.individuals[0];
-      p.textAlign(p.LEFT, p.TOP)
-      p.textSize(20)
-      p.fill(255)
-      p.text(best.root.toString(), 0, 0)
-
       p.translate(w / 2, h / 2)
 
+      p.fill(255);
       env.points.forEach(point => {
         p.ellipse(point.x * state.current.size, -point.y * state.current.size, 10, 10);
       });
@@ -62,6 +55,7 @@ export default function ExampleSketch() {
       pop.runGeneration(env);
       console.log(pop.individuals[0].fitness, pop.individuals[0].root.toString(), pop.individuals[0].evaluate(3));
 
+      state.current.setFunc(best.root.toString());
 
       p.stroke(255);
       p.strokeWeight(1);
@@ -69,7 +63,7 @@ export default function ExampleSketch() {
       p.beginShape();
       for (let x = -w / 2 / state.current.size; x < w / 2 / state.current.size; x += 0.2) {
         let y = best.evaluate(x);
-        p.ellipse(x * state.current.size, -y * state.current.size, 5, 5);
+        //p.ellipse(x * state.current.size, -y * state.current.size, 5, 5);
         p.vertex(x * state.current.size, -y * state.current.size);
 
       }
@@ -85,16 +79,21 @@ export default function ExampleSketch() {
 
   return (
     <div>
-      <label htmlFor="sizeSlider">Dimensione</label>
-      <input
-        id="sizeSlider"
-        type="range"
-        min={1}
-        max={100}
-        value={size}
-        onChange={(e) => setSize(parseInt(e.target.value))}
-      />
-      <SketchRenderer sketch={sketch} />
+      <div>
+        <label htmlFor="sizeSlider">Dimensione</label>
+        <input
+          id="sizeSlider"
+          type="range"
+          min={1}
+          max={100}
+          value={size}
+          onChange={(e) => setSize(parseInt(e.target.value))}
+        />
+      </div>
+      <div>
+        <SketchRenderer sketch={sketch} />
+        <p>{func}</p>
+      </div>
     </div>
   )
 }

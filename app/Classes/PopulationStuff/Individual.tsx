@@ -18,7 +18,10 @@ export default class Individual implements Individual_interface {
 
     constructor() {
         this.fitness = 0;
-        this.root = this.buildRandomTree(2);
+        this.root = new BinaryNode(
+            this.buildRandomTree(2),
+            new ConstantNode(BinaryOperations.ADD.neutralElement),
+            BinaryOperations.ADD);
     }
 
     static loadX(x: number): void {

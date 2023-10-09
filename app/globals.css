@@ -11,6 +11,7 @@ body {
   padding: 1rem;
   margin: auto;
   overflow-x: hidden;
+  text-align: center;
 }
 
 /* buttons */
@@ -39,8 +40,4 @@ input[type='range'] {
   cursor: pointer;
   background-color: rgb(55, 65, 81);
   border-radius: 0.5rem;
-}
-
-h1{
-  text-align: left;
 }

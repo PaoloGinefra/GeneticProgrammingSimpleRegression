@@ -18,13 +18,14 @@ export default class Population implements Population_interface {
     populationSize: number;
     generation: number;
     static mutationRate = 0.1;
-    static variableProbability = 0.7;
+    static variableProbability = 0.5;
     static sumProbability = 0.5;
-    static addNodeProbability = 0.5;
-    static variableConstantSwitchProbability = 0.01;
-    static newIndividualsPerGeneration = 10;
-    static newRandomTreeProbability = 0.1;
+    static addNodeProbability = 0.1;
+    static variableConstantSwitchProbability = 0.3;
+    static newIndividualsPerGeneration = 30;
+    static newRandomTreeProbability = 0.001;
     static tournamentSize = 4;
+    static constantMutationStep = 0.01;
     individuals: Individual[];
 
     constructor(populationSize: number) {
