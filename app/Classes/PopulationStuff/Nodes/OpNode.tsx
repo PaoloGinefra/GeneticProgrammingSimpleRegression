@@ -10,4 +10,8 @@ export default class OpNode implements Node_interface {
 
     mutate(): void {
     }
+
+    getDegree(): number {
+        return 0;
+    }
 }

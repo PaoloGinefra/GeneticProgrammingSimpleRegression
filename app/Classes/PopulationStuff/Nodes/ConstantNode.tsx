@@ -36,4 +36,8 @@ export default class ConstantNode extends OpNode implements ConstantNode_interfa
     toString(): string {
         return this.isVariable ? "x" : "(" + this.value.toFixed(2).toString() + ")";
     }
+
+    getDegree(): number {
+        return this.isVariable ? 1 : 0;
+    }
 }

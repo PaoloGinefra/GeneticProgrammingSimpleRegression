@@ -55,4 +55,8 @@ export default class BinaryNode extends OpNode implements BinaryNode_interface {
     toString(): string {
         return `(${this.left.toString()} ${this.operation.symbol} ${this.right.toString()})`;
     }
+
+    getDegree(): number {
+        return this.operation.degreeOperation(this.left.getDegree(), this.right.getDegree());
+    }
 }

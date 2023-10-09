@@ -39,7 +39,6 @@ export default class Individual implements Individual_interface {
             return;
         }
         this.root.mutate();
-
     }
 
     buildRandomTree(expectedDepth: number): OpNode {

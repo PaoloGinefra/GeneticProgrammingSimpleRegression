@@ -13,8 +13,9 @@ import Environment from './Classes/EnviromentStuff/Enviroment'
 export default function ExampleSketch() {
   const [size, setSize] = useState(50)
   const [func, setFunc] = useState("")
+  const [deg, setDeg] = useState(0)
 
-  const sketch = useStatefulSketch({ size, setFunc }, (state, p) => {
+  const sketch = useStatefulSketch({ size, setFunc, setDeg }, (state, p) => {
     const w = 800
     const h = 800
 
@@ -53,9 +54,10 @@ export default function ExampleSketch() {
 
       best = pop.individuals[0];
       pop.runGeneration(env);
-      console.log(pop.individuals[0].fitness, pop.individuals[0].root.toString(), pop.individuals[0].evaluate(3));
+      console.log(pop.individuals[0].fitness, pop.individuals[0].root.toString(), pop.individuals[0].root.getDegree());
 
       state.current.setFunc(best.root.toString());
+      state.current.setDeg(best.root.getDegree());
 
       p.stroke(255);
       p.strokeWeight(1);
@@ -92,6 +94,7 @@ export default function ExampleSketch() {
       </div>
       <div>
         <SketchRenderer sketch={sketch} />
+        <p>Current best function whose degree is {deg}:</p>
         <p>{func}</p>
       </div>
     </div>
